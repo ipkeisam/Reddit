@@ -10,9 +10,9 @@ import Foundation
 
 class Item {
     
-    var score : Int = 0
-    var title : String = ""
-    var numComments : Int = 0
+    var score : Int
+    var title : String
+    var numComments : Int
     var image : Image?
     
     init(_ score : Int, _ title : String, _ numComments : Int, _ image : Image?) {

@@ -10,9 +10,9 @@ import Foundation
 
 class Image {
     
-    var url : String = ""
-    var width : Int = 0
-    var height : Int = 0
+    var url : String
+    var width : Int
+    var height : Int
     
     init(_ url : String, _ width : Int, _ height : Int) {
         self.url = url

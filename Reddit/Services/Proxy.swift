@@ -10,15 +10,21 @@ import Foundation
 
 class Proxy {
     
-    var url : String
+    var url : String?
     
     init(url: String) {
         self.url = url
     }
     
+    var urlObject : URL {
+        get {
+            return URL(string: url!)!
+        }
+    }
+    
     func get(_ completionHandler : @escaping (_ data : Data?, _ response : URLResponse?, _ error : Error?) -> ()) {
         
-        let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: urlObject) { (data, response, error) in
             completionHandler(data, response, error)
         }
         
