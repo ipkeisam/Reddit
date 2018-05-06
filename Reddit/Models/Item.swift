@@ -13,12 +13,14 @@ class Item {
     var score : Int
     var title : String
     var numComments : Int
+    var name : String
     var image : Image?
     
-    init(_ score : Int, _ title : String, _ numComments : Int, _ image : Image?) {
+    init(_ score : Int, _ title : String, _ numComments : Int, _ name : String, _ image : Image?) {
         self.score = score
         self.title = title
         self.numComments = numComments
+        self.name = name
         self.image = image
     }
 }

@@ -42,7 +42,12 @@ class RedditItemMapper {
             return nil
         }
         
-        return Item(score, title, num_comments, redditImageMapper?.map(jsonElementData))
+        guard let name = jsonElementData["name"] as? String else {
+            NSLog("Name is missing")
+            return nil
+        }
+        
+        return Item(score, title, num_comments, name, redditImageMapper?.map(jsonElementData))
 
     }
 
