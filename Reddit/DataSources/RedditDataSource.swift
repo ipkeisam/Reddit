@@ -30,11 +30,15 @@ class RedditDataSource: NSObject, UITableViewDataSource
         itemTableViewCell.numCommentLabel.text = "Comments: \(item.numComments)"
         
         do {
-            let data = try Data(contentsOf: URL(string: (item.image?.url)!)!)
-            let image = UIImage(data: data)
-            itemTableViewCell.imageView?.frame  = CGRect(x: 300, y: 0, width: (item.image?.width)!, height: (item.image?.height)!)
-            itemTableViewCell.imageView?.image = image
+            itemTableViewCell.setNeedsLayout()
+            itemTableViewCell.layoutIfNeeded()
+
+            let height : CGFloat = 70
+            let width : CGFloat = CGFloat(((item.image?.width)! / (item.image?.height)!) * 70)
+            itemTableViewCell.imageView?.frame  = CGRect(x: 300, y: 0, width: width, height: height)
+            itemTableViewCell.imageView?.imageFromURL(urlString: (item.image?.url)!)
             
+
         }  catch let error as NSError {
             print(error.localizedDescription)
         }
