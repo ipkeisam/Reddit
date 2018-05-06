@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         redditTableView.dataSource = redditDataSource
         redditTableView.delegate = self
+        redditTableView.activityStartAnimating(activityColor: UIColor.blue, backgroundColor: UIColor.clear)
         redditService.getResponse(self)
     }
 
@@ -27,11 +28,13 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
 
     func reloadRedditView() {
+        redditTableView.activityStopAnimating()
         redditTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
 }
 
