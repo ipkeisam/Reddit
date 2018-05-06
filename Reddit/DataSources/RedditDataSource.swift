@@ -35,7 +35,6 @@ class RedditDataSource: NSObject, UITableViewDataSource
         itemTableViewCell.scoreLabel.text = "Score: \(item.score)"
         itemTableViewCell.titleLabel.text = "Title: \(item.title)"
         itemTableViewCell.numCommentLabel.text = "Comments: \(item.numComments)"
-        itemTableViewCell.numCommentLabel.frame.size.width = 220
         itemTableViewCell.imageView?.imageFromURL(item)
         
         if indexPath.row == items.count - 1 {

@@ -25,6 +25,7 @@ class Proxy {
     func get(_ completionHandler : @escaping (_ data : Data?, _ response : URLResponse?, _ error : Error?) -> ()) {
         
         if (urlObject == nil) {
+            NSLog("Proxy Url cannot be empty")
             return
         }
         
