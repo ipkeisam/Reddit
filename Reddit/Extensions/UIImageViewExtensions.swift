@@ -25,7 +25,7 @@ extension UIImageView {
         }).resume()
     }
     
-    func imageFromURL(_ item : Item) {
+    func imageFromURL(_ item : Item, _ height : CGFloat) {
         if (item.image == nil) {
             return
         }
@@ -33,8 +33,7 @@ extension UIImageView {
         do {
             let data = try Data(contentsOf: URL(string: (item.image?.url)!)!)
             let image = UIImage(data: data)
-            let height : CGFloat = 70
-            let width : CGFloat = CGFloat(((item.image?.width)! / (item.image?.height)!) * 70)
+            let width : CGFloat = CGFloat(((item.image?.width)! / (item.image?.height)!)) * height
             self.frame  = CGRect(x: 0, y: 0, width: width, height: height)
             self.image = image
         

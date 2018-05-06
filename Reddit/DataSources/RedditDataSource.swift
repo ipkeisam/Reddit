@@ -14,6 +14,7 @@ class RedditDataSource: NSObject, UITableViewDataSource
     let redditService = RedditService()
     var items = [Item]()
     var viewController : ViewController?
+    var cellHeight : CGFloat = 0
     
     func loadData(_ name : String) {
         redditService.getResponse(viewController!, name)
@@ -35,7 +36,7 @@ class RedditDataSource: NSObject, UITableViewDataSource
         itemTableViewCell.scoreLabel.text = "Score: \(item.score)"
         itemTableViewCell.titleLabel.text = "Title: \(item.title)"
         itemTableViewCell.numCommentLabel.text = "Comments: \(item.numComments)"
-        itemTableViewCell.imageView?.imageFromURL(item)
+        itemTableViewCell.imageView?.imageFromURL(item, cellHeight)
         
         if indexPath.row == items.count - 1 {
             loadData(item.name)

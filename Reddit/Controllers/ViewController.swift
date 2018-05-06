@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     let redditService = RedditService()
     let redditDataSource = RedditDataSource()
+    let cellHeight : CGFloat = 70
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         redditTableView.delegate = self
         redditTableView.activityStartAnimating(activityColor: UIColor.blue, backgroundColor: UIColor.clear)
         redditDataSource.viewController = self
+        redditDataSource.cellHeight = cellHeight
         redditDataSource.loadData("")
     }
 
@@ -34,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return cellHeight
     }
 }
 
