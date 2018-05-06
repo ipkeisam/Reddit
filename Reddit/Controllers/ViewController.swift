@@ -20,7 +20,8 @@ class ViewController: UIViewController, UITableViewDelegate {
         redditTableView.dataSource = redditDataSource
         redditTableView.delegate = self
         redditTableView.activityStartAnimating(activityColor: UIColor.blue, backgroundColor: UIColor.clear)
-        redditService.getResponse(self)
+        redditDataSource.viewController = self
+        redditDataSource.loadData("")
     }
 
     override func didReceiveMemoryWarning() {

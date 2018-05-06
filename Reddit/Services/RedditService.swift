@@ -10,18 +10,19 @@ import Foundation
 
 class RedditService {
     
-    let url : String
+    let rootUrl : String
     let redditResponseMapper : RedditResponseMapper?
     var viewController : ViewController?
     
     init() {
-        url = "http://www.reddit.com/.json"
+        rootUrl = "http://www.reddit.com/.json"
         redditResponseMapper = RedditResponseMapper()
     }
     
-    func getResponse(_ viewController : ViewController){
+    func getResponse(_ viewController : ViewController, _ name : String){
         
         self.viewController = viewController
+        let url = name.isEmpty ? rootUrl : "\(rootUrl)?after=\(name)"
         let proxy = Proxy(url: url)
         proxy.get(completionHandler)
     }
@@ -34,7 +35,8 @@ class RedditService {
         }
         
         if (redditResponseMapper != nil) {
-            viewController?.redditDataSource.items = redditResponseMapper!.map(data)!
+            let results : [Item] = redditResponseMapper!.map(data)!
+            viewController?.redditDataSource.items.append(contentsOf: results)
             viewController?.reloadRedditView()
         }
     }

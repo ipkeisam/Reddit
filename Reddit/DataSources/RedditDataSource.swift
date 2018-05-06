@@ -11,7 +11,14 @@ import UIKit
 
 class RedditDataSource: NSObject, UITableViewDataSource
 {
+    let redditService = RedditService()
     var items = [Item]()
+    var viewController : ViewController?
+    
+    func loadData(_ name : String) {
+        redditService.getResponse(viewController!, name)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -29,6 +36,10 @@ class RedditDataSource: NSObject, UITableViewDataSource
         itemTableViewCell.titleLabel.text = "Title: \(item.title)"
         itemTableViewCell.numCommentLabel.text = "Comments: \(item.numComments)"
         itemTableViewCell.imageView?.imageFromURL(item)
+        
+        if indexPath.row == items.count - 1 {
+            loadData(item.name)
+        }
         
         return itemTableViewCell
     }
