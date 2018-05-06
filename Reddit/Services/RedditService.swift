@@ -36,7 +36,7 @@ class RedditService {
         
         if (redditResponseMapper != nil) {
             results = redditResponseMapper!.map(data)
-            viewController?.items = results!
+            viewController?.redditDataSource.items = results!
             viewController?.reloadRedditView()
         }
     }
