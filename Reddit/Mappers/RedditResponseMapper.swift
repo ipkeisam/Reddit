@@ -24,17 +24,17 @@ class RedditResponseMapper {
             let jsonSerialized = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any]
             
             guard let json = jsonSerialized, let jsonData = json["data"] else {
-                print("Json response missing data!")
+                NSLog("Json response missing data!")
                 return results
             }
             
             guard let jsonDataChildrenList = jsonData as? [String : Any] else {
-                print("Json response missing data children dictionary!")
+                NSLog("Json response missing data children dictionary!")
                 return results
             }
             
             guard let jsonArray = jsonDataChildrenList["children"]! as? NSArray else {
-                print("Json response missing data children array!")
+                NSLog("Json response missing data children array!")
                 return results
             }
             
@@ -46,7 +46,7 @@ class RedditResponseMapper {
             }
 
         }  catch let error as NSError {
-            print(error.localizedDescription)
+            NSLog(error.localizedDescription)
         }
         return results
     }

@@ -18,27 +18,27 @@ class RedditItemMapper {
     
     func map(_ jsonElement : Any?) -> Item? {
         guard let jsonElement = jsonElement as? [String : Any] else {
-            print("Json response missing element dictionary!")
+            NSLog("Json response missing element dictionary!")
             return nil
         }
         
         guard let jsonElementData = jsonElement["data"] as? [String : Any] else {
-            print("Json response missing element data dictionary!")
+            NSLog("Json response missing element data dictionary!")
             return nil
         }
         
         guard let score = jsonElementData["score"] as? Int else{
-            print("Score is missing")
+            NSLog("Score is missing")
             return nil
         }
         
         guard let title = jsonElementData["title"] as? String else {
-            print("Title is missing")
+            NSLog("Title is missing")
             return nil
         }
         
         guard let num_comments = jsonElementData["num_comments"] as? Int else {
-            print("Num comments is missing")
+            NSLog("Num comments is missing")
             return nil
         }
         

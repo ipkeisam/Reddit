@@ -29,7 +29,7 @@ class RedditService {
     func completionHandler(data: Data?, response : URLResponse?, error : Error?) {
         
         if data == nil {
-            print(error?.localizedDescription ?? "")
+            NSLog(error?.localizedDescription ?? "")
             return
         }
         

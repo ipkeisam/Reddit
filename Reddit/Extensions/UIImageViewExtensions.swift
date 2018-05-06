@@ -13,7 +13,7 @@ extension UIImageView {
         URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
             
             if error != nil {
-                print(error ?? "")
+                NSLog(error!.localizedDescription)
                 return
             }
             DispatchQueue.main.async(execute: { () -> Void in
@@ -35,11 +35,11 @@ extension UIImageView {
             let image = UIImage(data: data)
             let height : CGFloat = 70
             let width : CGFloat = CGFloat(((item.image?.width)! / (item.image?.height)!) * 70)
-            self.frame  = CGRect(x: 300, y: 0, width: width, height: height)
+            self.frame  = CGRect(x: 0, y: 0, width: width, height: height)
             self.image = image
         
         }  catch let error as NSError {
-        print(error.localizedDescription)
+            NSLog(error.localizedDescription)
         }
     }
     
