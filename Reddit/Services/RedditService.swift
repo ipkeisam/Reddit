@@ -13,7 +13,6 @@ class RedditService {
     let url : String
     let redditResponseMapper : RedditResponseMapper?
     var viewController : ViewController?
-    var results : [Item]?
     
     init() {
         url = "http://www.reddit.com/.json"
@@ -35,8 +34,7 @@ class RedditService {
         }
         
         if (redditResponseMapper != nil) {
-            results = redditResponseMapper!.map(data)
-            viewController?.redditDataSource.items = results!
+            viewController?.redditDataSource.items = redditResponseMapper!.map(data)!
             viewController?.reloadRedditView()
         }
     }

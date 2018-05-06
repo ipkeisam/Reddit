@@ -28,20 +28,8 @@ class RedditDataSource: NSObject, UITableViewDataSource
         itemTableViewCell.scoreLabel.text = "Score: \(item.score)"
         itemTableViewCell.titleLabel.text = "Title: \(item.title)"
         itemTableViewCell.numCommentLabel.text = "Comments: \(item.numComments)"
+        itemTableViewCell.imageView?.imageFromURL(item)
         
-        do {
-            itemTableViewCell.setNeedsLayout()
-            itemTableViewCell.layoutIfNeeded()
-
-            let height : CGFloat = 70
-            let width : CGFloat = CGFloat(((item.image?.width)! / (item.image?.height)!) * 70)
-            itemTableViewCell.imageView?.frame  = CGRect(x: 300, y: 0, width: width, height: height)
-            itemTableViewCell.imageView?.imageFromURL(urlString: (item.image?.url)!)
-            
-
-        }  catch let error as NSError {
-            print(error.localizedDescription)
-        }
         return itemTableViewCell
     }
 }

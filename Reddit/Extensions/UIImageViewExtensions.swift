@@ -8,19 +8,39 @@
 import UIKit
 
 extension UIImageView {
-public func imageFromURL(urlString: String) {
-    
-    URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+    func imageFromURLAsync(_ urlString: String) {
         
-        if error != nil {
-            print(error ?? "")
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error ?? "")
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+                self.superview?.layoutSubviews()
+            })
+            
+        }).resume()
+    }
+    
+    func imageFromURL(_ item : Item) {
+        if (item.image == nil) {
             return
         }
-        DispatchQueue.main.async(execute: { () -> Void in
-            let image = UIImage(data: data!)
-            self.image = image
-            self.superview?.layoutSubviews()
-        })
         
-    }).resume()
-}}
+        do {
+            let data = try Data(contentsOf: URL(string: (item.image?.url)!)!)
+            let image = UIImage(data: data)
+            let height : CGFloat = 70
+            let width : CGFloat = CGFloat(((item.image?.width)! / (item.image?.height)!) * 70)
+            self.frame  = CGRect(x: 300, y: 0, width: width, height: height)
+            self.image = image
+        
+        }  catch let error as NSError {
+        print(error.localizedDescription)
+        }
+    }
+    
+}
