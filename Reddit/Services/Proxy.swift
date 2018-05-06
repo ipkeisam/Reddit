@@ -16,15 +16,19 @@ class Proxy {
         self.url = url
     }
     
-    var urlObject : URL {
+    var urlObject : URL? {
         get {
-            return URL(string: url!)!
+            return (url != nil) ? URL(string: url!) : nil
         }
     }
     
     func get(_ completionHandler : @escaping (_ data : Data?, _ response : URLResponse?, _ error : Error?) -> ()) {
         
-        let task = URLSession.shared.dataTask(with: urlObject) { (data, response, error) in
+        if (urlObject == nil) {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: urlObject!) { (data, response, error) in
             completionHandler(data, response, error)
         }
         

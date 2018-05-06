@@ -22,6 +22,7 @@
 		261593FC209DFD8500C94981 /* RedditResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261593FB209DFD8500C94981 /* RedditResponseMapper.swift */; };
 		26326350209E0911005C2808 /* RedditImageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2632634F209E0911005C2808 /* RedditImageMapper.swift */; };
 		26326352209E0FA0005C2808 /* RedditItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26326351209E0FA0005C2808 /* RedditItemMapper.swift */; };
+		26326355209E30F9005C2808 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26326354209E30F9005C2808 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		261593FB209DFD8500C94981 /* RedditResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditResponseMapper.swift; sourceTree = "<group>"; };
 		2632634F209E0911005C2808 /* RedditImageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditImageMapper.swift; sourceTree = "<group>"; };
 		26326351209E0FA0005C2808 /* RedditItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditItemMapper.swift; sourceTree = "<group>"; };
+		26326354209E30F9005C2808 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +115,12 @@
 		261593BE209D658300C94981 /* Reddit */ = {
 			isa = PBXGroup;
 			children = (
+				26326353209E2CBE005C2808 /* Controllers */,
 				261593FA209D7C7F00C94981 /* Mappers */,
 				261593F9209D7C6600C94981 /* Factories */,
 				261593F4209D7AF100C94981 /* Models */,
 				261593ED209D65B600C94981 /* Services */,
 				261593BF209D658400C94981 /* AppDelegate.swift */,
-				261593C1209D658400C94981 /* ViewController.swift */,
 				261593C3209D658400C94981 /* Main.storyboard */,
 				261593C6209D658A00C94981 /* Assets.xcassets */,
 				261593C8209D658A00C94981 /* LaunchScreen.storyboard */,
@@ -160,6 +162,7 @@
 			children = (
 				261593F5209D7B0A00C94981 /* Image.swift */,
 				261593F7209D7BC400C94981 /* Item.swift */,
+				26326354209E30F9005C2808 /* ItemTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +182,14 @@
 				26326351209E0FA0005C2808 /* RedditItemMapper.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		26326353209E2CBE005C2808 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				261593C1209D658400C94981 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +326,7 @@
 			files = (
 				261593C2209D658400C94981 /* ViewController.swift in Sources */,
 				261593EF209D65C900C94981 /* Proxy.swift in Sources */,
+				26326355209E30F9005C2808 /* ItemTableViewCell.swift in Sources */,
 				261593C0209D658400C94981 /* AppDelegate.swift in Sources */,
 				261593FC209DFD8500C94981 /* RedditResponseMapper.swift in Sources */,
 				26326352209E0FA0005C2808 /* RedditItemMapper.swift in Sources */,

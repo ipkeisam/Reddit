@@ -12,6 +12,7 @@ class RedditService {
     
     let url : String
     let redditResponseMapper : RedditResponseMapper?
+    var viewController : ViewController?
     var results : [Item]?
     
     init() {
@@ -19,8 +20,9 @@ class RedditService {
         redditResponseMapper = RedditResponseMapper()
     }
     
-    func getResponse() {
+    func getResponse(_ viewController : ViewController){
         
+        self.viewController = viewController
         let proxy = Proxy(url: url)
         proxy.get(completionHandler)
     }
@@ -34,6 +36,8 @@ class RedditService {
         
         if (redditResponseMapper != nil) {
             results = redditResponseMapper!.map(data)
+            viewController?.items = results!
+            viewController?.reloadRedditView()
         }
     }
 }
